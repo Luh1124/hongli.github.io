@@ -618,7 +618,11 @@ section {
 
 .pub-title-line {
     margin-bottom: 0.25rem;
-    line-height: 1.45;
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    line-height: 1.35;
 }
 
 .pub-title {
@@ -626,6 +630,7 @@ section {
     font-weight: 600;
     color: var(--color-text);
     transition: color var(--transition);
+    line-height: 1.35;
 }
 
 .pub-item:hover .pub-title {
@@ -635,11 +640,13 @@ section {
 .pub-inline-links {
     font-size: 0.78rem;
     white-space: nowrap;
-    margin-left: 0.3rem;
+    margin-left: 0;
+    display: inline-flex;
+    align-items: baseline;
 }
 
 .pub-inline-links a {
-    display: inline-block;
+    display: inline;
     font-size: 0.78rem;
     font-weight: 500;
     color: var(--color-text-secondary);
@@ -648,8 +655,8 @@ section {
     border-radius: 0;
     margin-left: 0;
     transition: all var(--transition);
-    vertical-align: middle;
-    line-height: 1.5;
+    vertical-align: baseline;
+    line-height: 1.35;
 }
 
 .pub-inline-links a + a::before {
@@ -892,6 +899,10 @@ section {
         display: block;
         margin-top: 0.3rem;
         margin-left: 0;
+    }
+
+    .pub-title-line {
+        display: block;
     }
 
     .news-list li {
