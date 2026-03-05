@@ -12,11 +12,7 @@
     top: 0;
     bottom: 0;
     width: 2px;
-    background: linear-gradient(
-        180deg,
-        rgba(37, 84, 208, 0.55) 0%,
-        rgba(228, 231, 237, 0.95) 100%
-    );
+    background: var(--color-border);
     left: 161px;
     border-radius: 1px;
 }
@@ -45,8 +41,8 @@
     display: inline-block;
     font-size: 0.72rem;
     font-weight: 600;
-    color: var(--color-accent);
-    background: var(--color-accent-light);
+    color: var(--color-text-secondary);
+    background: rgba(82, 90, 106, 0.06);
     padding: 0.15rem 0.55rem;
     border-radius: 6px;
     line-height: 1.5;

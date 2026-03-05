@@ -1,1 +1,14 @@
 *.DS_Store
+cv/*.aux
+cv/*.log
+cv/*.out
+cv/*.synctex*
+cv/*.toc
+cv/*.fls
+cv/*.fdb_latexmk
+cv/*.bbl
+cv/*.blg
+cv/*.brf
+cv/*.idx
+cv/*.ilg
+cv/*.xdv

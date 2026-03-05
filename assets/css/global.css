@@ -85,8 +85,8 @@ body::before {
     top: 0;
     left: 0;
     right: 0;
-    height: 3px;
-    background: var(--color-divider-soft);
+    height: 0;
+    background: transparent;
     z-index: 1100;
 }
 
@@ -98,7 +98,7 @@ body::before {
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     padding: 0.55rem 0;
     transition: box-shadow var(--transition), background var(--transition);
-    margin-top: 3px;
+    margin-top: 0;
 }
 
 .navbar.scrolled {
@@ -171,7 +171,7 @@ section {
 }
 
 .card:hover {
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-sm);
 }
 
 .hero-card {
@@ -180,7 +180,7 @@ section {
 }
 
 .hero-card:hover {
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--shadow-md);
 }
 
 .content-card {
@@ -191,7 +191,7 @@ section {
 .card-header-custom {
     padding: 1.1rem 1.5rem;
     border-bottom: 1px solid var(--color-border);
-    background: linear-gradient(to right, var(--color-accent-light), transparent 60%);
+    background: transparent;
     position: relative;
 }
 
@@ -201,8 +201,8 @@ section {
     left: 0;
     top: 0;
     bottom: 0;
-    width: 3px;
-    background: var(--color-divider-soft);
+    width: 2px;
+    background: rgba(37, 84, 208, 0.22);
     border-radius: 0 2px 2px 0;
 }
 
@@ -217,7 +217,7 @@ section {
 }
 
 .card-header-custom h4 i {
-    color: var(--color-accent);
+    color: var(--color-text-muted);
     font-size: 0.95rem;
 }
 
@@ -239,7 +239,7 @@ section {
 .divider {
     height: 3px;
     width: 50px;
-    background: var(--color-divider-soft);
+    background: rgba(37, 84, 208, 0.28);
     border-radius: 2px;
     margin: 0.9rem 0 1.1rem;
 }
@@ -269,15 +269,16 @@ section {
     width: 210px;
     height: 210px;
     border-radius: 50%;
-    padding: 4px;
-    background: var(--color-divider-soft);
-    box-shadow: var(--shadow-md);
+    padding: 0;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-sm);
     transition: transform var(--transition), box-shadow var(--transition);
 }
 
 .hero-avatar-wrapper:hover {
     transform: scale(1.03);
-    box-shadow: var(--shadow-accent), var(--shadow-md);
+    box-shadow: var(--shadow-md);
 }
 
 .hero-seeking {
@@ -317,8 +318,8 @@ section {
     display: inline-block;
     font-size: 0.78rem;
     font-weight: 500;
-    color: var(--color-accent);
-    background: var(--color-accent-light);
+    color: var(--color-text-secondary);
+    background: rgba(82, 90, 106, 0.06);
     padding: 0.25rem 0.85rem;
     border-radius: 20px;
     letter-spacing: 0.01em;
@@ -363,6 +364,15 @@ section {
     box-shadow: var(--shadow-accent);
 }
 
+.social-links a.social-cv {
+    width: auto;
+    padding: 0 0.8rem;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
 /* ===== Education ===== */
 .edu-item {
     display: flex;
@@ -402,22 +412,22 @@ section {
 .research-tag {
     display: inline-block;
     padding: 0.4rem 0.9rem;
-    background: var(--color-accent-light);
-    color: var(--color-accent);
+    background: transparent;
+    color: var(--color-text-secondary);
     border-radius: 20px;
     font-size: 0.82rem;
     font-weight: 500;
-    border: 1px solid rgba(37, 84, 208, 0.1);
+    border: 1px solid var(--color-border);
     transition: all var(--transition);
     cursor: default;
 }
 
 .research-tag:hover {
-    background: var(--color-accent);
-    color: #fff;
-    border-color: var(--color-accent);
-    transform: translateY(-1px);
-    box-shadow: var(--shadow-accent);
+    background: rgba(82, 90, 106, 0.05);
+    color: var(--color-text);
+    border-color: rgba(82, 90, 106, 0.18);
+    transform: none;
+    box-shadow: none;
 }
 
 /* ===== Academic Services ===== */
@@ -569,7 +579,7 @@ section {
 }
 
 .pub-item:hover {
-    background: rgba(37, 84, 208, 0.02);
+    background: transparent;
 }
 
 .pub-thumb {
@@ -598,7 +608,7 @@ section {
 }
 
 .pub-item:hover .pub-thumb img {
-    transform: scale(1.04);
+    transform: scale(1.02);
 }
 
 .pub-info {
@@ -619,33 +629,39 @@ section {
 }
 
 .pub-item:hover .pub-title {
-    color: var(--color-accent);
+    color: var(--color-text);
 }
 
 .pub-inline-links {
-    font-size: 0;
+    font-size: 0.78rem;
     white-space: nowrap;
     margin-left: 0.3rem;
 }
 
 .pub-inline-links a {
     display: inline-block;
-    font-size: 0.72rem;
+    font-size: 0.78rem;
     font-weight: 500;
-    color: var(--color-accent);
-    background: var(--color-accent-light);
-    padding: 0.1rem 0.5rem;
-    border-radius: 10px;
-    margin-left: 0.25rem;
+    color: var(--color-text-secondary);
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+    margin-left: 0;
     transition: all var(--transition);
     vertical-align: middle;
     line-height: 1.5;
 }
 
+.pub-inline-links a + a::before {
+    content: '·';
+    color: var(--color-text-muted);
+    margin: 0 0.5rem 0 0.5rem;
+}
+
 .pub-inline-links a:hover {
-    background: var(--color-accent);
-    color: #fff;
-    text-decoration: none;
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
 }
 
 .pub-authors {
@@ -656,7 +672,7 @@ section {
 }
 
 .pub-authors strong {
-    color: var(--color-accent);
+    color: var(--color-text);
     font-weight: 600;
 }
 
@@ -677,28 +693,33 @@ section {
     letter-spacing: 0.02em;
     padding: 0;
     border-radius: 0;
-    color: var(--color-accent);
+    color: var(--color-text-muted);
     background: transparent;
     border: none;
 }
 
 .pub-venue strong.venue-cvpr {
-    color: #2554d0;
+    color: var(--color-text-muted);
 }
 .pub-venue strong.venue-iclr {
-    color: #7c3aed;
+    color: var(--color-text-muted);
 }
 .pub-venue strong.venue-neurips {
-    color: #dc2626;
+    color: var(--color-text-muted);
 }
 .pub-venue strong.venue-icra {
-    color: #0891b2;
+    color: var(--color-text-muted);
 }
 .pub-venue strong.venue-ijcv {
-    color: #059669;
+    color: var(--color-text-muted);
 }
 .pub-venue strong.venue-neurocomputing {
-    color: #d97706;
+    color: var(--color-text-muted);
+}
+
+.pub-venue strong.venue-preprint {
+    color: var(--color-text-muted);
+    font-weight: 500;
 }
 
 .pub-scholar-link {
