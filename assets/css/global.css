@@ -221,6 +221,20 @@ section {
     font-size: 0.95rem;
 }
 
+.card-header-heading-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.45rem 0.85rem;
+}
+
+.pub-contrib-note {
+    font-size: 0.72rem;
+    font-weight: 500;
+    line-height: 1.35;
+    color: var(--color-text-muted);
+}
+
 /* ===== Hero Section ===== */
 .display-name {
     font-size: 2rem;
