@@ -613,7 +613,8 @@ section {
     box-shadow: var(--shadow-sm);
 }
 
-.pub-thumb img {
+.pub-thumb img,
+.pub-thumb video {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -621,7 +622,8 @@ section {
     transition: transform var(--transition-slow);
 }
 
-.pub-item:hover .pub-thumb img {
+.pub-item:hover .pub-thumb img,
+.pub-item:hover .pub-thumb video {
     transform: scale(1.02);
 }
 
