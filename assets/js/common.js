@@ -1,5 +1,58 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    // Theme toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const root = document.documentElement;
+    const prefersDark = window.matchMedia
+        ? window.matchMedia('(prefers-color-scheme: dark)')
+        : { matches: false, addEventListener: () => {} };
+
+    const getStoredTheme = () => {
+        try {
+            return localStorage.getItem('theme');
+        } catch (error) {
+            return null;
+        }
+    };
+
+    const setStoredTheme = (theme) => {
+        try {
+            localStorage.setItem('theme', theme);
+        } catch (error) {
+            root.dataset.theme = theme;
+        }
+    };
+
+    const getPreferredTheme = () => getStoredTheme() || (prefersDark.matches ? 'dark' : 'light');
+
+    const applyTheme = (theme) => {
+        const isDark = theme === 'dark';
+        root.dataset.theme = theme;
+        if (themeToggle) {
+            themeToggle.innerHTML = isDark
+                ? '<i class="fa-solid fa-sun"></i>'
+                : '<i class="fa-solid fa-moon"></i>';
+            themeToggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+            themeToggle.setAttribute('title', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+        }
+    };
+
+    applyTheme(getPreferredTheme());
+
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const nextTheme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+            setStoredTheme(nextTheme);
+            applyTheme(nextTheme);
+        });
+    }
+
+    prefersDark.addEventListener('change', () => {
+        if (!getStoredTheme()) {
+            applyTheme(getPreferredTheme());
+        }
+    });
+
     // Fade-in animation via Intersection Observer
     const fadeEls = document.querySelectorAll('.fade-in');
     if (fadeEls.length) {

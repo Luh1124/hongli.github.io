@@ -5,6 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Hong Li - BUAA</title>
     <link href="assets/images/H.ico" rel="shortcut icon">
+    <script>
+        (() => {
+            let savedTheme = null;
+            try {
+                savedTheme = localStorage.getItem('theme');
+            } catch (error) {
+                savedTheme = null;
+            }
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            document.documentElement.dataset.theme = savedTheme || (prefersDark ? 'dark' : 'light');
+        })();
+    </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,6 +50,11 @@
                 <li class="nav-item"><a class="nav-link" href="#publications">Publications</a></li>
                 <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
                 <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                <li class="nav-item nav-theme-item">
+                    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" title="Switch theme">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
+                </li>
             </ul>
         </div>
     </div>
@@ -154,6 +171,7 @@
             </div>
             <div class="card-body p-4">
                 <ul class="news-list" id="newsList">
+                    <li><span class="news-date">June 2026</span><span class="news-body"><i class="fa-solid fa-file-lines news-icon news-icon-paper"></i>1 paper (Monocular Avatar Reconstruction) accepted to <strong>ECCV 2026</strong>!</span></li>
                     <li><span class="news-date">April 2026</span><span class="news-body"><i class="fa-solid fa-file-lines news-icon news-icon-paper"></i>2 papers (Relit-LiVE, UniVidX) accepted to <strong>SIGGRAPH 2026</strong>! 🎉</span></li>
                     <li><span class="news-date">April 2026</span><span class="news-body"><i class="fa-solid fa-star news-icon news-icon-paper"></i><strong>NeAR</strong> selected as <strong>CVPR 2026 Highlight</strong>. <a href="https://github.com/Luh1124/NeAR" target="_blank" rel="noopener noreferrer">Code</a>.</span></li>
                     <li><span class="news-date">Feb 2026</span><span class="news-body"><i class="fa-solid fa-file-lines news-icon news-icon-paper"></i>2 papers (NeAR, PartDiffuser) accepted to <strong>CVPR 2026</strong>!</span></li>
@@ -186,6 +204,20 @@
                 </div>
             </div>
             <div class="card-body p-4">
+                <!-- FacePBR -->
+                <div class="pub-item">
+                    <div class="pub-thumb">
+                        <img src="Projects/FacePBR/teaser.png" alt="Monocular Avatar Reconstruction" loading="lazy" onerror="this.onerror=null;this.src='assets/images/teaser-placeholder.svg';">
+                    </div>
+                    <div class="pub-info">
+                        <div class="pub-title-line">
+                            <span class="pub-title">Monocular Avatar Reconstruction via Cascaded Diffusion Priors and UV-Space Differentiable Shading.</span>
+                        </div>
+                        <p class="pub-authors"><strong>Hong Li</strong>, Minqi Meng, Yanjun Liang, Chongjie Ye, Houyuan Chen, Weiqing Xiao, Xianda Guo, Guojun Lei, Xuhui Liu, Chaojie Yang, Yanlun Peng, Hao Zhao, Baochang Zhang.</p>
+                        <p class="pub-venue"><strong class="venue-eccv">ECCV</strong> 2026</p>
+                    </div>
+                </div>
+
                 <!-- Relit-LiVE -->
                 <div class="pub-item">
                     <div class="pub-thumb">
@@ -598,6 +630,7 @@
                         <span class="research-tag">NeurIPS</span>
                         <span class="research-tag">ICLR</span>
                         <span class="research-tag">ECCV</span>
+                        <span class="research-tag">ACM MM</span>
                         <span class="research-tag">WACV</span>
                         <span class="research-tag">ICME</span>
                     </div>
