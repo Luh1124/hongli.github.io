@@ -23,7 +23,9 @@ xelatex Hong_Li_CV.tex
 
 ## VS Code / Cursor (LaTeX Workshop)
 
-This file **must not** be built with **pdfLaTeX** (you will get missing Chinese font errors like `unihei5b`).
+This file **must not** be built with **pdfLaTeX** because it uses `fontspec`.
+The Chinese name in the header uses the macOS `Songti SC` font so common PDF
+renderers can display it correctly.
 
 - The first line `% !TEX program = xelatex` tells LaTeX Workshop to use **XeLaTeX**.
 - The repo root `.vscode/settings.json` sets the default recipe to **latexmk (xelatex)**.
@@ -32,4 +34,5 @@ If you still see pdfLaTeX in the log, use **LaTeX Workshop: Build LaTeX project*
 
 ## Build on Overleaf
 
-Upload `Hong_Li_CV.tex` to Overleaf, then set **Compiler** to **XeLaTeX** and compile.
+Upload `Hong_Li_CV.tex` to Overleaf, set **Compiler** to **XeLaTeX**, and replace
+`Songti SC` with an available Chinese font if Overleaf does not have it.

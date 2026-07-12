@@ -1,9 +1,8 @@
 % !TEX program = xelatex
 \documentclass[11pt,a4paper]{article}
 
-% UTF-8 (Chinese) support. Compile with XeLaTeX (recommended) or LuaLaTeX.
-% Use TeX Live built-in fonts for maximum portability.
-\usepackage[UTF8,fontset=fandol]{ctex}
+% Unicode font support. Compile with XeLaTeX.
+\usepackage{fontspec}
 
 \usepackage[margin=1.6cm]{geometry}
 \usepackage{tabularx}
@@ -22,6 +21,11 @@
 
 \definecolor{accent}{RGB}{37,84,208}
 \definecolor{muted}{RGB}{82,90,106}
+
+\newfontfamily\ChineseNameFont[
+  BoldFont=Songti SC Bold
+]{Songti SC}
+\newcommand{\ChineseName}[1]{{\ChineseNameFont #1}}
 
 \titleformat{\section}{\large\bfseries}{}{0pt}{}
 \titlespacing*{\section}{0pt}{10pt}{6pt}
@@ -72,7 +76,7 @@
 \setlength{\partopsep}{0pt}
 \setlength{\parsep}{0pt}
 \setlength{\itemsep}{0pt}}
-\item[\hbox to 3.0cm{\hfil\textbf{\textsc{\textcolor{muted}{#1}}}}] #2
+\item[\parbox{3.0cm}{\raggedleft\textbf{\textsc{\textcolor{muted}{#1}}}}] #2
 \end{list}\vspace{8pt}
 }
 
@@ -89,7 +93,7 @@
 
 \begin{document}
 
-\CVHeader{Hong Li (李宏)}
+\CVHeader{Hong Li (\ChineseName{李宏})}
 \CVSubheader{Ph.D. Candidate, School of Automation Science and Electrical Engineering, Beihang University (BUAA)}
 \textcolor{muted}{Seeking full-time positions or postdoctoral opportunities starting in \textbf{2026/2027}.}\par
 
@@ -150,7 +154,7 @@
 \end{itemize}
 }
 
-\LongSection{Publications}{
+\LongSection{Selected Publications}{
 \textcolor{muted}{\EqContrib~Equal contribution.}\par
 \vspace{2pt}
 \textbf{Conference}\par
