@@ -83,8 +83,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Active nav link highlighting based on scroll position
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.navbar .nav-link');
+    const sectionNavLinks = Array.from(navLinks).filter((link) => {
+        const href = link.getAttribute('href') || '';
+        return href.startsWith('#');
+    });
 
-    if (sections.length && navLinks.length) {
+    if (sections.length && sectionNavLinks.length) {
         const highlightNav = () => {
             const scrollY = window.scrollY + 100;
             let current = '';
@@ -95,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
-            navLinks.forEach((link) => {
+            sectionNavLinks.forEach((link) => {
                 link.classList.remove('active');
                 if (link.getAttribute('href') === '#' + current) {
                     link.classList.add('active');

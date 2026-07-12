@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Blogs - Hong Li</title>
+    <link href="assets/images/H.ico" rel="shortcut icon">
+    <script>
+        (() => {
+            let savedTheme = null;
+            try {
+                savedTheme = localStorage.getItem('theme');
+            } catch (error) {
+                savedTheme = null;
+            }
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            document.documentElement.dataset.theme = savedTheme || (prefersDark ? 'dark' : 'light');
+        })();
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css">
+
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/pubstyle.css">
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand" href="index.html" aria-label="Home">
+            <img src="assets/images/H.ico" class="brand-icon" alt="HL">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html#about">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="index.html#education">Education</a></li>
+                <li class="nav-item"><a class="nav-link" href="index.html#research">Research</a></li>
+                <li class="nav-item"><a class="nav-link" href="index.html#news">News</a></li>
+                <li class="nav-item"><a class="nav-link" href="index.html#publications">Publications</a></li>
+                <li class="nav-item"><a class="nav-link" href="index.html#experience">Experience</a></li>
+                <li class="nav-item"><a class="nav-link" href="index.html#services">Services</a></li>
+                <li class="nav-item"><a class="nav-link active" href="blogs.html">Blogs</a></li>
+                <li class="nav-item nav-theme-item">
+                    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" title="Switch theme">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<main>
+    <section id="blogs" class="section-hero">
+        <div class="container">
+            <div class="card hero-card blog-hero-card fade-in">
+                <div class="card-body p-4 p-md-5">
+                    <p class="blog-kicker mb-2">Notes and Reports</p>
+                    <h1 class="display-name mb-3">Blogs</h1>
+                    <p class="blog-hero-copy mb-0">
+                        A place for paper reports, reading notes, and research thoughts around 3D generation, neural rendering, video generation, and digital humans.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="blog-categories">
+        <div class="container">
+            <div class="blog-category-grid fade-in">
+                <a class="blog-category" href="#paper-reports">
+                    <span class="blog-category-icon"><i class="fa-solid fa-file-lines"></i></span>
+                    <span class="blog-category-body">
+                        <span class="blog-category-title">Paper Reports</span>
+                        <span class="blog-category-text">Structured write-ups for my own papers and project stories.</span>
+                    </span>
+                </a>
+                <a class="blog-category" href="#reading-notes">
+                    <span class="blog-category-icon"><i class="fa-solid fa-book-open-reader"></i></span>
+                    <span class="blog-category-body">
+                        <span class="blog-category-title">Reading Notes</span>
+                        <span class="blog-category-text">Personal takeaways from papers I read and revisit.</span>
+                    </span>
+                </a>
+                <a class="blog-category" href="#research-log">
+                    <span class="blog-category-icon"><i class="fa-solid fa-lightbulb"></i></span>
+                    <span class="blog-category-body">
+                        <span class="blog-category-title">Research Log</span>
+                        <span class="blog-category-text">Ideas, implementation details, experiments, and lessons learned.</span>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="recent-posts">
+        <div class="container">
+            <div class="card content-card fade-in">
+                <div class="card-header-custom">
+                    <h4><i class="fa-solid fa-pen-nib me-2"></i>Recent Posts</h4>
+                </div>
+                <div class="card-body p-4">
+                    <div class="blog-empty">
+                        <i class="fa-regular fa-note-sticky"></i>
+                        <div>
+                            <strong>Posts will appear here.</strong>
+                            <p class="mb-0">Start with a paper report, a reading note, or a short research log when the first article is ready.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="paper-reports">
+        <div class="container">
+            <div class="card content-card fade-in">
+                <div class="card-header-custom">
+                    <h4><i class="fa-solid fa-file-lines me-2"></i>Paper Reports</h4>
+                </div>
+                <div class="card-body p-4">
+                    <div class="blog-post-row">
+                        <span class="blog-post-date">Draft</span>
+                        <div class="blog-post-main">
+                            <h5>Project reports for accepted papers</h5>
+                            <p>Motivation, method intuition, experiments, limitations, and behind-the-scenes notes.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="reading-notes">
+        <div class="container">
+            <div class="card content-card fade-in">
+                <div class="card-header-custom">
+                    <h4><i class="fa-solid fa-book-open-reader me-2"></i>Reading Notes</h4>
+                </div>
+                <div class="card-body p-4">
+                    <div class="blog-post-row">
+                        <span class="blog-post-date">Draft</span>
+                        <div class="blog-post-main">
+                            <h5>Notes from papers worth remembering</h5>
+                            <p>Problem framing, key assumptions, useful tricks, open questions, and follow-up ideas.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="research-log">
+        <div class="container">
+            <div class="card content-card fade-in">
+                <div class="card-header-custom">
+                    <h4><i class="fa-solid fa-lightbulb me-2"></i>Research Log</h4>
+                </div>
+                <div class="card-body p-4">
+                    <div class="blog-post-row">
+                        <span class="blog-post-date">Draft</span>
+                        <div class="blog-post-main">
+                            <h5>Small observations from ongoing research</h5>
+                            <p>Implementation notes, experiment reflections, debugging stories, and idea fragments.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+            <div class="footer-links">
+                <a href="https://scholar.google.com/citations?user=5FBYzP8AAAAJ" title="Google Scholar"><i class="fa-solid fa-graduation-cap"></i></a>
+                <a href="https://github.com/Luh1124" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                <a href="https://x.com/HongLi0502" title="Twitter / X"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="mailto:link0502@buaa.edu.cn" title="Email"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+            <div class="footer-meta">
+                <small>&copy; <script>document.write(new Date().getFullYear());</script> Hong Li &middot; Last updated: <script>document.write(new Date(document.lastModified).toISOString().slice(0,10));</script></small>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<a href="#" class="back-to-top" id="backToTop" title="Back to Top">
+    <i class="fa-solid fa-chevron-up"></i>
+</a>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/common.js"></script>
+
+</body>
+</html>
