@@ -120,7 +120,7 @@ a:hover {
 }
 
 ::selection {
-    background: rgba(37, 84, 208, 0.15);
+    background: color-mix(in srgb, var(--color-accent) 18%, transparent);
     color: var(--color-text);
 }
 
@@ -294,7 +294,7 @@ section {
     top: 0;
     bottom: 0;
     width: 2px;
-    background: rgba(37, 84, 208, 0.22);
+    background: color-mix(in srgb, var(--color-accent) 25%, transparent);
     border-radius: 0 2px 2px 0;
 }
 
@@ -345,7 +345,7 @@ section {
 .divider {
     height: 3px;
     width: 50px;
-    background: rgba(37, 84, 208, 0.28);
+    background: color-mix(in srgb, var(--color-accent) 30%, transparent);
     border-radius: 2px;
     margin: 0.9rem 0 1.1rem;
 }
@@ -385,17 +385,6 @@ section {
 .hero-avatar-wrapper:hover {
     transform: scale(1.03);
     box-shadow: var(--shadow-md);
-}
-
-.hero-seeking {
-    font-size: 0.88rem;
-    color: var(--color-text-secondary);
-    line-height: 1.5;
-}
-
-.hero-seeking strong {
-    color: var(--color-accent);
-    font-weight: 600;
 }
 
 .hero-avatar-inner {
@@ -440,6 +429,35 @@ section {
     font-size: 0.85rem;
     font-weight: 500;
     margin-top: 0.25rem;
+}
+
+.hiring-notice strong {
+    color: inherit;
+    font-weight: 700;
+}
+
+:root[data-theme="dark"] .hiring-notice {
+    background: linear-gradient(135deg, rgba(251, 191, 36, 0.16), rgba(217, 119, 6, 0.14));
+    color: #fcd34d;
+}
+
+/* ===== Scholar Citation Stat ===== */
+.scholar-stat {
+    display: none;
+}
+
+.scholar-stat.visible {
+    display: inline-block;
+}
+
+a.hero-identity-tag {
+    text-decoration: none;
+    transition: color var(--transition), background var(--transition);
+}
+
+a.hero-identity-tag:hover {
+    color: var(--color-accent);
+    background: var(--color-accent-light);
 }
 
 .social-links {
@@ -505,7 +523,7 @@ section {
     border-radius: 50%;
     background: var(--color-accent);
     margin-top: 0.5rem;
-    box-shadow: 0 0 0 4px rgba(37, 84, 208, 0.1);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-accent) 12%, transparent);
 }
 
 /* ===== Research Tags ===== */
@@ -587,7 +605,7 @@ section {
 }
 
 .news-list li:hover {
-    background: rgba(37, 84, 208, 0.025);
+    background: color-mix(in srgb, var(--color-accent) 4%, transparent);
 }
 
 .news-list li.news-hidden {
@@ -685,18 +703,19 @@ section {
 }
 
 .pub-item:hover {
-    background: transparent;
+    background: color-mix(in srgb, var(--color-accent) 4%, transparent);
 }
 
 .pub-thumb {
     flex-shrink: 0;
-    width: 180px;
-    aspect-ratio: 16 / 10;
+    width: 210px;
+    aspect-ratio: 16 / 9;
     overflow: hidden;
     border-radius: var(--radius-sm);
     border: 1px solid var(--color-border);
-    background: var(--color-bg);
+    background: var(--color-surface);
     align-self: center;
+    padding: 0.15rem;
     box-shadow: var(--shadow-xs);
     transition: box-shadow var(--transition);
 }
@@ -709,14 +728,15 @@ section {
 .pub-thumb video {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     display: block;
+    border-radius: calc(var(--radius-sm) - 4px);
     transition: transform var(--transition-slow);
 }
 
 .pub-item:hover .pub-thumb img,
 .pub-item:hover .pub-thumb video {
-    transform: scale(1.02);
+    transform: none;
 }
 
 .pub-info {
@@ -808,31 +828,9 @@ section {
     letter-spacing: 0.02em;
     padding: 0;
     border-radius: 0;
-    color: var(--color-text-muted);
+    color: var(--color-accent);
     background: transparent;
     border: none;
-}
-
-.pub-venue strong.venue-cvpr {
-    color: var(--color-text-muted);
-}
-.pub-venue strong.venue-eccv {
-    color: var(--color-text-muted);
-}
-.pub-venue strong.venue-iclr {
-    color: var(--color-text-muted);
-}
-.pub-venue strong.venue-neurips {
-    color: var(--color-text-muted);
-}
-.pub-venue strong.venue-icra {
-    color: var(--color-text-muted);
-}
-.pub-venue strong.venue-ijcv {
-    color: var(--color-text-muted);
-}
-.pub-venue strong.venue-neurocomputing {
-    color: var(--color-text-muted);
 }
 
 .pub-venue strong.venue-preprint {
@@ -850,8 +848,8 @@ section {
     letter-spacing: 0.03em;
     text-transform: uppercase;
     color: var(--color-highlight);
-    border: 1px solid rgba(220, 38, 38, 0.35);
-    background: rgba(220, 38, 38, 0.09);
+    border: 1px solid color-mix(in srgb, var(--color-highlight) 40%, transparent);
+    background: color-mix(in srgb, var(--color-highlight) 10%, transparent);
     padding: 0.12rem 0.5rem;
     border-radius: 4px;
     vertical-align: middle;
@@ -918,7 +916,7 @@ section {
 
 .blog-category:hover {
     color: var(--color-text);
-    border-color: rgba(37, 84, 208, 0.24);
+    border-color: color-mix(in srgb, var(--color-accent) 28%, transparent);
     box-shadow: var(--shadow-sm);
     transform: translateY(-2px);
 }
@@ -1137,7 +1135,7 @@ section {
     }
 
     .pub-thumb {
-        width: 150px;
+        width: 180px;
     }
 
     .blog-category-grid {
@@ -1171,7 +1169,7 @@ section {
 
     .pub-thumb {
         width: 100%;
-        max-width: 220px;
+        max-width: 260px;
     }
 
     .pub-inline-links {

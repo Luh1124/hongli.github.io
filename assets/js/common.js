@@ -143,4 +143,27 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Footer dates (replaces legacy document.write)
+    document.querySelectorAll('[data-footer-year]').forEach((el) => {
+        el.textContent = new Date().getFullYear();
+    });
+    document.querySelectorAll('[data-footer-updated]').forEach((el) => {
+        el.textContent = new Date(document.lastModified).toISOString().slice(0, 10);
+    });
+
+    // Google Scholar citation count (assets/data/scholar.json is refreshed daily by GitHub Actions)
+    fetch('assets/data/scholar.json', { cache: 'no-cache' })
+        .then((res) => (res.ok ? res.json() : null))
+        .then((data) => {
+            const citations = data && Number(data.citations);
+            if (!citations) return;
+            document.querySelectorAll('[data-scholar-citations]').forEach((el) => {
+                el.textContent = citations.toLocaleString('en-US');
+            });
+            document.querySelectorAll('.scholar-stat').forEach((el) => {
+                el.classList.add('visible');
+            });
+        })
+        .catch(() => {});
+
 });
