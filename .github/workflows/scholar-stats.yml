@@ -18,11 +18,7 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install dependencies
-        run: pip install scholarly
-
       - name: Fetch citation stats
-        continue-on-error: true  # Scholar occasionally blocks CI IPs; keep last known value
         run: python scripts/update_scholar_stats.py
 
       - name: Commit and push if changed
