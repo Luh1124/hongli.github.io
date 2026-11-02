@@ -146,6 +146,10 @@
     filter: invert(1);
 }
 
+:root[data-theme="dark"] .timeline-logo--baai {
+    filter: invert(1);
+}
+
 .timeline-company {
     font-size: 0.95rem;
     font-weight: 600;
