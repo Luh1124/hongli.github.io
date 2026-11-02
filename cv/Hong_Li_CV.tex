@@ -1,211 +1,144 @@
 % !TEX program = xelatex
-\documentclass[11pt,a4paper]{article}
-
-% Unicode font support. Compile with XeLaTeX.
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=1.4cm]{geometry}
 \usepackage{fontspec}
-
-\usepackage[margin=1.6cm]{geometry}
-\usepackage{tabularx}
-\usepackage{array}
-\usepackage{enumitem}
-\usepackage{xurl}
+\usepackage{tabularx,array,enumitem,xurl,xcolor,titlesec,fancyhdr}
 \usepackage[hidelinks]{hyperref}
-\usepackage{xcolor}
-\usepackage{titlesec}
-\usepackage{setspace}
-
+\setmainfont[BoldFont=texgyretermes-bold.otf,ItalicFont=texgyretermes-italic.otf,
+  BoldItalicFont=texgyretermes-bolditalic.otf]{texgyretermes-regular.otf}
+\IfFileExists{/System/Library/Fonts/Supplemental/Songti.ttc}{%
+  \newfontfamily\ChineseNameFont[BoldFont=Songti SC Bold]{Songti SC}}{%
+  \newfontfamily\ChineseNameFont[BoldFont=FandolSong-Bold.otf]{FandolSong-Regular.otf}}
+\newcommand{\ChineseName}[1]{{\ChineseNameFont #1}}
+\definecolor{accent}{RGB}{36,80,166}
+\definecolor{muted}{RGB}{78,87,101}
+\definecolor{rule}{RGB}{216,222,232}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0pt}
-\renewcommand{\baselinestretch}{1.05}
 \setlength{\emergencystretch}{2em}
-
-\definecolor{accent}{RGB}{37,84,208}
-\definecolor{muted}{RGB}{82,90,106}
-
-\newfontfamily\ChineseNameFont[
-  BoldFont=Songti SC Bold
-]{Songti SC}
-\newcommand{\ChineseName}[1]{{\ChineseNameFont #1}}
-
-\titleformat{\section}{\large\bfseries}{}{0pt}{}
-\titlespacing*{\section}{0pt}{10pt}{6pt}
-
-\newcolumntype{R}{>{\raggedleft\arraybackslash}p{3.0cm}}
-
-\newcommand{\CVHeader}[1]{%
-{\LARGE \textbf{#1}}\vspace{2pt}\par
-}
-
-\newcommand{\CVSubheader}[1]{%
-{\normalsize #1}\vspace{6pt}\par
-}
-
-\newcommand{\CVLine}{\vspace{6pt}\hrule\vspace{10pt}}
-
-\newcommand{\Entry}[3]{%
-\begin{tabularx}{\textwidth}{@{}X R@{}}
-\textbf{#1} & #2 \\
-\multicolumn{2}{@{}X@{}}{\textcolor{muted}{#3}} \\
-\end{tabularx}
-}
-
-\newcommand{\EntryNoSub}[2]{%
-\begin{tabularx}{\textwidth}{@{}X R@{}}
-\textbf{#1} & #2 \\
-\end{tabularx}
-}
-
-\setlist[itemize]{leftmargin=1.2em, topsep=2pt, itemsep=2pt, parsep=0pt}
-
-% --- Section layout (Xuan-style two columns) ---
-\newcommand{\Section}[2]{%
-\begin{tabularx}{\textwidth}{@{}R X@{}}
-{\textbf{\textsc{\textcolor{muted}{#1}}}} &
-\begin{minipage}[t]{\linewidth}
-#2
-\end{minipage}
-\end{tabularx}\vspace{8pt}
-}
-
-\newcommand{\LongSection}[2]{%
-\begin{list}{}{%
-\setlength{\leftmargin}{3.35cm}
-\setlength{\labelwidth}{3.0cm}
-\setlength{\labelsep}{0.35cm}
-\setlength{\topsep}{0pt}
-\setlength{\partopsep}{0pt}
-\setlength{\parsep}{0pt}
-\setlength{\itemsep}{0pt}}
-\item[\parbox{3.0cm}{\raggedleft\textbf{\textsc{\textcolor{muted}{#1}}}}] #2
-\end{list}\vspace{8pt}
-}
-
-\newcommand{\ItemTitle}[2]{%
-\textbf{#1}\hfill #2\par
-}
-
-\newcommand{\ItemSub}[1]{%
-{\textcolor{muted}{#1}}\par
-}
-
+\raggedbottom
+\hypersetup{pdftitle={Hong Li — Curriculum Vitae},pdfauthor={Hong Li},pdfsubject={Generative AI, 3D Vision and Neural Rendering}}
+\titleformat{\section}{\large\bfseries\color{accent}}{}{0pt}{}[\vspace{2pt}{\color{rule}\titlerule}]
+\titlespacing*{\section}{0pt}{10pt}{5pt}
+\setlist[itemize]{leftmargin=1.2em,topsep=2pt,itemsep=1pt,parsep=0pt}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancyfoot[L]{\scriptsize\color{muted}Hong Li \enspace|\enspace Generative AI \& 3D Vision}
+\fancyfoot[R]{\scriptsize\color{muted}November 2026 \enspace·\enspace \thepage}
+\setlength{\footskip}{16pt}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcommand{\entry}[3]{%
+  \begin{tabularx}{\textwidth}{@{}Y r@{}}\textbf{#1} & {\small #2}\\\end{tabularx}\vspace{-2pt}\par
+  {\small\color{muted}#3}\par}
 \newcommand{\EqContrib}{\textsuperscript{*}}
-\newcommand{\PaperTitle}[2]{\href{#1}{\textcolor{accent}{``#2''}}}
-
+\newcommand{\reslink}[2]{\href{#1}{\textcolor{accent}{[#2]}}}
 \begin{document}
-
-\CVHeader{Hong Li (\ChineseName{李宏})}
-\CVSubheader{Ph.D. Candidate, School of Automation Science and Electrical Engineering, Beihang University (BUAA)}
-\textcolor{muted}{Seeking full-time positions or postdoctoral opportunities starting in \textbf{2026/2027}.}\par
-
-\vspace{6pt}
+{\fontsize{28}{30}\selectfont\bfseries Hong Li}\enspace{\Large\ChineseName{李宏}}\hfill
+{\small\color{accent}Ph.D. Candidate · Beihang University}
+\par\vspace{5pt}
 {\small
-\href{mailto:link0502@buaa.edu.cn}{link0502@buaa.edu.cn}
-\,|\, \href{tel:+8619801205024}{+8619801205024}
-\,|\, \href{https://luh1124.github.io/hongli.github.io/}{Homepage}
-\,|\, \href{https://scholar.google.com/citations?user=5FBYzP8AAAAJ}{Google Scholar}
-\,|\, \href{https://github.com/Luh1124}{GitHub}
-\,|\, \href{https://x.com/HongLi0502}{X}\par
-}
+\href{mailto:link0502@buaa.edu.cn}{link0502@buaa.edu.cn}\enspace|\enspace
+\href{tel:+8619801205024}{+86 19801205024}\enspace|\enspace
+\href{https://luh1124.github.io/hongli.github.io/}{Homepage}\enspace|\enspace
+\href{https://scholar.google.com/citations?user=5FBYzP8AAAAJ}{Google Scholar}\enspace|\enspace
+\href{https://github.com/Luh1124}{GitHub}}
+\par\vspace{4pt}
+{\small\color{muted}Open to research roles and postdoctoral opportunities in 2026/2027.}
 
-\CVLine
+\section{Research Profile}
+I develop generative models for editable 3D assets and controllable visual content, combining geometric and physical priors with neural rendering. My work spans digital humans, PBR materials, video relighting, and video generation and editing, with an emphasis on visual fidelity, identity preservation, and temporal consistency. My research experience covers data preparation, model design and training, evaluation, and deployment.
 
-\Section{Research Interests}{
-\begin{itemize}
-  \item Face animation \& digital humans; 3D reconstruction \& generation; neural rendering
-  \item Image generation; video generation; self-supervised learning
-\end{itemize}
-}
-
-\Section{Education}{
-\ItemTitle{Ph.D. Candidate, Control Science and Engineering, Beihang University (BUAA), Beijing, China}{2021 -- Present}
-\ItemSub{Advisor: Prof. \href{https://scholar.google.com/citations?user=ImJz6MsAAAAJ&hl=zh-CN}{Baochang Zhang}.}
+\section{Education}
+\entry{Beihang University (BUAA), Beijing, China}{2021 -- Jan 2027}{Ph.D. Candidate, Control Science and Engineering · School of Automation Science and Electrical Engineering}
+Advisor: Prof. \href{https://scholar.google.com/citations?user=ImJz6MsAAAAJ\&hl=zh-CN}{Baochang Zhang}
+\par\vspace{4pt}
+\entry{Beihang University (BUAA), Beijing, China}{2018 -- 2021}{M.S., Mechanical Engineering · Advisor: Prof. Liang Wang}
 \vspace{4pt}
-\ItemTitle{M.S. in Mechanical Engineering, Beihang University (BUAA), Beijing, China}{2018 -- 2021}
-\ItemSub{Advisor: Prof. Liang Wang. Research: mechanical design and embedded systems.}
-}
+\entry{Shijiazhuang Tiedao University, China}{2013 -- 2017}{B.Eng., Mechatronics}
 
-\Section{Experience}{
-\ItemTitle{Meshy --- Generative AI Researcher (Rising Intern)}{Dec 2025 -- Present}
+\section{Research and Industry Experience}
+\entry{Meshy}{Dec 2025 -- Present}{Generative AI Researcher (Rising Intern)}
 \begin{itemize}
-  \item 3D texture generation algorithms.
+  \item Research 3D geometry and PBR texture generation, focusing on structural completeness, material consistency, and visual detail.
+  \item Contribute to native 3D part decomposition and texture generation, covering data preparation, model training, validation, and deployment iterations.
 \end{itemize}
-\vspace{2pt}
-\ItemTitle{BAAI --- Algorithm Intern, Controllable World Model Center}{Jan 2025 -- Dec 2025}
+\vspace{4pt}
+\entry{Beijing Academy of Artificial Intelligence (BAAI)}{Jan 2025 -- Dec 2025}{Algorithm Intern · Controllable World Model Center · Mentor: \href{https://sites.google.com/view/fromandto}{Hao Zhao}}
 \begin{itemize}
-  \item 3D reconstruction and neural rendering.
-  \item Mentor: \href{https://sites.google.com/view/fromandto}{Hao Zhao}.
+  \item Conducted research on 3D reconstruction, neural rendering, and video generation, using Gaussian splatting, NeRF, diffusion models, and geometric estimation for method development and experimental evaluation.
 \end{itemize}
-\vspace{2pt}
-\ItemTitle{Shengshu Technology --- Algorithm Engineer, Research Department}{Feb 2024 -- Jan 2025}
+\vspace{4pt}
+\entry{Shengshu Technology}{Feb 2024 -- Jan 2025}{Algorithm Engineer · Research Department · Mentors: \href{https://yikaiw.github.io/}{Yikai Wang}, Yiqi Jiang}
 \begin{itemize}
-  \item 3D generation and video generation research.
-  \item Mentors: \href{https://yikaiw.github.io/}{Yikai Wang}, Yiqi Jiang.
+  \item Developed and evaluated methods for controllable animation and video concept transfer, including model training, ablation studies, and research prototypes.
 \end{itemize}
-\vspace{2pt}
-\ItemTitle{Baidu --- Algorithm Intern, Visual Technology Department}{Jul 2023 -- Jan 2024}
+\vspace{4pt}
+\entry{Baidu}{Jul 2023 -- Jan 2024}{Algorithm Intern · Visual Technology Department}
 \begin{itemize}
-  \item 3D face reconstruction.
+  \item Worked on 3D face reconstruction and generative modeling for digital human assets.
 \end{itemize}
-\vspace{2pt}
-\ItemTitle{Momo (Zhiwen Technology) --- Intern, Deep Learning Center}{Dec 2021 -- May 2023}
+\vspace{4pt}
+\entry{Momo (Zhiwen Technology)}{Dec 2021 -- May 2023}{Deep Learning Intern · Mentor: Tianxiang Zheng}
 \begin{itemize}
-  \item Face animation.
-  \item Mentor: Tianxiang Zheng.
+  \item Studied face animation and neural rendering, with a focus on motion control, expression transfer, and identity preservation.
 \end{itemize}
-}
 
-\LongSection{Selected Publications}{
-\textcolor{muted}{\EqContrib~Equal contribution.}\par
-\vspace{2pt}
-\textbf{Conference}\par
-\vspace{2pt}
-\begin{itemize}[leftmargin=0.9em, topsep=1pt, itemsep=1pt, parsep=0pt]
-  \item {\small Qizhe Wei, Xianda Guo, Shaocong Xu, \textbf{Hong Li}, Runyi Yang, Hao Zhao, \PaperTitle{https://openreview.net/pdf?id=bemQ8NstY0}{GeoStereo: A Unified Stereo Geometry Estimation Framework for Disparity and Surface Normal}. \textcolor{muted}{\textbf{ACM MM} 2026}. \href{https://openreview.net/forum?id=bemQ8NstY0}{OpenReview}}
+\section{Selected Research Projects}
+\textbf{Interactive digital human systems} · Student lead \hfill {\small Aug 2023 -- Sep 2025}\\
+{\small Beijing Municipal Science and Technology Commission project. Developed digital human asset pipelines using 3D face reconstruction, identity preserving UV textures, and diffusion models.}
+\par\vspace{4pt}
+\textbf{Video driven virtual human animation} · Student lead \hfill {\small Jan 2022 -- Apr 2023}\\
+{\small Huawei project. Combined unsupervised keypoints, dense motion estimation, and 3D priors for face animation and motion--identity disentanglement.}
 
-  \item {\small \textbf{Hong Li}, Minqi Meng, Yanjun Liang, Chongjie Ye, Houyuan Chen, Weiqing Xiao, Xianda Guo, Guojun Lei, Xuhui Liu, Chaojie Yang, Yanlun Peng, Hao Zhao, Baochang Zhang, \textcolor{accent}{``Monocular Avatar Reconstruction via Cascaded Diffusion Priors and UV-Space Differentiable Shading.''} \textcolor{muted}{\textbf{ECCV} 2026}. \href{https://luh1124.github.io/MARCUS-Avatar-Projectpage/}{Project}}
+\section{Academic Service and Skills}
+{\small
+\textbf{Program Committee:} AAAI. \quad \textbf{Reviewer:} CVPR, ICCV, NeurIPS, ICLR, ECCV, ACM MM, WACV, ICME.\\
+\textbf{Leadership:} Doctoral class representative, Beihang University.\\
+\textbf{Tools and methods:} Python, PyTorch, Linux, Git; diffusion models, Gaussian splatting, NeRF; dataset construction, training and evaluation pipelines, and ablation studies.}
 
-  \item {\small Weiqing Xiao\EqContrib, \textbf{Hong Li}\EqContrib, Xiuyu Yang, Houyuan Chen, Wenyi Li, Tianqi Liu, Shaocong Xu, Chongjie Ye, Hao Zhao, Beibei Wang, \textcolor{accent}{``Relit-LiVE: Relight Video by Jointly Learning Environment Video.''} \textcolor{muted}{\textbf{SIGGRAPH} 2026}. \href{https://github.com/zhuxing0/Relit-LiVE}{Code} \,|\, \href{https://zhuxing0.github.io/projects/Relit-LiVE/}{Project}}
+\newpage
+\section{Selected Publications}
+{\small\color{muted}\EqContrib~Equal contribution. Entries are ordered by year; preprints are explicitly marked.}
+\begin{enumerate}[leftmargin=1.6em,label={[\arabic*]},topsep=6pt,itemsep=7pt,parsep=0pt]
+\fontsize{10}{12.5}\selectfont
+\item \textbf{EditDistill: Is It Possible to Guide Video Editing with Image Editing}. Guojun Lei\EqContrib, \textbf{Hong Li}\EqContrib, Hongbing Yang, Lixue Gong, Chi Wang, Zheng Dong. \textcolor{accent}{\textbf{NeurIPS 2026}}.
 
-  \item {\small \textbf{Hong Li}\EqContrib, Chongjie Ye\EqContrib, Houyuan Chen, Weiqing Xiao, Ziyang Yan, Lixing Xiao, Zhaoxi Chen, Jianfeng Xiang, Shaocong Xu, Xuhui Liu, Yikai Wang, Baochang Zhang, Xiaoguang Han, Jiaolong Yang, Hao Zhao, \PaperTitle{https://www.arxiv.org/abs/2511.18600}{NeAR: Coupled Neural Asset-Renderer Stack}. \textcolor{muted}{\textbf{CVPR} 2026 (\textbf{Highlight})}. \href{https://github.com/Luh1124/NeAR}{Code} \,|\, \href{https://near-project.github.io/}{Project}}
+\item \href{https://ultratex.vercel.app/}{\textbf{UltraTex: Aligning Physical Knowledge for High-Fidelity PBR Texture Generation}}. Jingzhi Bao, Xiaohe Ma, \textbf{Hong Li}, Yuanming Hu, Xiaoguang Han. \textcolor{accent}{\textbf{SIGGRAPH Asia 2026 Journal Track / ACM TOG}}\enspace \reslink{https://ultratex.vercel.app/}{Project}
 
-  \item {\small Yichen Yang\EqContrib, \textbf{Hong Li}\EqContrib, Haodong Zhu, Linin Yang, Guojun Lei, Sheng Xu, Baochang Zhang, \PaperTitle{https://arxiv.org/abs/2511.18801}{PartDiffuser: Part-wise 3D Mesh Generation via Discrete Diffusion}. \textcolor{muted}{\textbf{CVPR} 2026}.}
+\item \href{https://openreview.net/pdf?id=bemQ8NstY0}{\textbf{GeoStereo: A Unified Stereo Geometry Estimation Framework for Disparity and Surface Normal}}. Qizhe Wei, Xianda Guo, Shaocong Xu, \textbf{Hong Li}, Runyi Yang, Hao Zhao. \textcolor{accent}{\textbf{ACM MM 2026}}.
 
-  \item {\small \textbf{Hong Li}\EqContrib, Houyuan Chen\EqContrib, Chongjie Ye, Zhaoxi Chen, Bohan Li, Shaocong Xu, Xianda Guo, Xuhui Liu, Yikai Wang, Baochang Zhang, Satoshi Ikehata, Boxin Shi, Anyi Rao, Hao Zhao, \PaperTitle{https://arxiv.org/abs/2506.18882}{Light of Normals: Unified Feature Representation for Universal Photometric Stereo}. \textcolor{muted}{\textbf{ICLR} 2026}. \href{https://github.com/houyuanchen111/LINO_UniPS.git}{Code} \,|\, \href{https://houyuanchen111.github.io/lino.github.io/}{Project}}
+\item \href{https://luh1124.github.io/MARCUS-Avatar-Projectpage/}{\textbf{Monocular Avatar Reconstruction via Cascaded Diffusion Priors and UV-Space Differentiable Shading}}. \textbf{Hong Li}, Minqi Meng, Yanjun Liang, Chongjie Ye, Houyuan Chen, Weiqing Xiao, Xianda Guo, Guojun Lei, Xuhui Liu, Chaojie Yang, Yanlun Peng, Hao Zhao, Baochang Zhang. \textcolor{accent}{\textbf{ECCV 2026}}\enspace \reslink{https://luh1124.github.io/MARCUS-Avatar-Projectpage/}{Project}
 
-  \item {\small Shaocong Xu, Songlin Wei, Qizhe Wei, Zheng Geng, \textbf{Hong Li}, Licheng Shen, Qianpu Sun, Shu Han, Bin Ma, Bohan Li, Chongjie Ye, Yuhang Zheng, Nan Wang, Saining Zhang, Hao Zhao, \PaperTitle{https://arxiv.org/abs/2512.23705}{Diffusion Knows Transparency: Repurposing Video Diffusion for Transparent Object Depth and Normal Estimation}. \textcolor{muted}{\textbf{ICRA} 2026}. \href{https://github.com/Daniellli/DKT}{Code} \,|\, \href{https://daniellli.github.io/projects/DKT/}{Project}}
+\item \href{https://zhuxing0.github.io/projects/Relit-LiVE/}{\textbf{Relit-LiVE: Relight Video by Jointly Learning Environment Video}}. Weiqing Xiao\EqContrib, \textbf{Hong Li}\EqContrib, Xiuyu Yang, Houyuan Chen, Wenyi Li, Tianqi Liu, Shaocong Xu, Chongjie Ye, Hao Zhao, Beibei Wang. \textcolor{accent}{\textbf{SIGGRAPH 2026}}\enspace \reslink{https://zhuxing0.github.io/projects/Relit-LiVE/}{Project}
 
-  \item {\small Guojun Lei\EqContrib, Chi Wang\EqContrib, \textbf{Hong Li}\EqContrib, Yikai Wang, Rong Zhang, Weiwei Xu, \PaperTitle{https://arxiv.org/abs/2411.10836}{AnimateAnything: Consistent and Controllable Animation for Video Generation}. \textcolor{muted}{\textbf{CVPR} 2025}. \href{https://github.com/yu-shaonian/AnimateAnything}{Code} \,|\, \href{https://yu-shaonian.github.io/Animate_Anything/}{Project}}
+\item \href{https://houyuanchen111.github.io/UniVidX.github.io/}{\textbf{UniVidX: A Unified Multimodal Framework for Versatile Video Generation via Diffusion Priors}}. Houyuan Chen, \textbf{Hong Li}, Xianghao Kong, Tianrui Zhu, Yuwei Guo, Shaocong Xu, Chongjie Ye, Lvmin Zhang, Hao Zhao, Anyi Rao. \textcolor{accent}{\textbf{SIGGRAPH 2026 Journal Track / ACM TOG}}\enspace \reslink{https://houyuanchen111.github.io/UniVidX.github.io/}{Project}
 
-  \item {\small Guojun Lei, Rong Zhang, Chi Wang, Tianhang Liu, \textbf{Hong Li}, Zhiyuan Ma, Weiwei Xu, \PaperTitle{https://arxiv.org/abs/2509.21086}{UniTransfer: Video Concept Transfer via Progressive Spatial and Timestep Decomposition}. \textcolor{muted}{\textbf{NeurIPS} 2025}. \href{https://github.com/anonymous-name-9/UniTransfer}{Code} \,|\, \href{https://yu-shaonian.github.io/UniTransfer-Web/}{Project}}
+\item \href{https://near-project.github.io/}{\textbf{NeAR: Coupled Neural Asset-Renderer Stack}}. \textbf{Hong Li}\EqContrib, Chongjie Ye\EqContrib, Houyuan Chen, Weiqing Xiao, Ziyang Yan, Lixing Xiao, Zhaoxi Chen, Jianfeng Xiang, Shaocong Xu, Xuhui Liu, Yikai Wang, Baochang Zhang, Xiaoguang Han, Jiaolong Yang, Hao Zhao. \textcolor{accent}{\textbf{CVPR 2026 Highlight}}\enspace \reslink{https://near-project.github.io/}{Project}
 
-  \item {\small \textbf{Hong Li}\EqContrib, Yutang Feng\EqContrib, Song Xue, Xuhui Liu, Bohan Zeng, Shanglin Li, Boyu Liu, Jianzhuang Liu, Shumin Han, Baochang Zhang, \PaperTitle{https://openaccess.thecvf.com/content/CVPR2024/papers/Li_UV-IDM_Identity-Conditioned_Latent_Diffusion_Model_for_Face_UV-Texture_Generation_CVPR_2024_paper.pdf}{UV-IDM: Identity-Conditioned Latent Diffusion Model for Face UV-Texture Generation}. \textcolor{muted}{\textbf{CVPR} 2024}. \href{https://github.com/Luh1124/UV-IDM}{Code}}
+\item \href{https://arxiv.org/abs/2511.18801}{\textbf{PartDiffuser: Part-wise 3D Mesh Generation via Discrete Diffusion}}. Yichen Yang\EqContrib, \textbf{Hong Li}\EqContrib, Haodong Zhu, Linin Yang, Guojun Lei, Sheng Xu, Baochang Zhang. \textcolor{accent}{\textbf{CVPR 2026}}.
 
-  \item {\small Bohan Zeng, Boyu Liu, \textbf{Hong Li}, Xuhui Liu, Jianzhuang Liu, Dapeng Chen, Wei Peng, Baochang Zhang, \PaperTitle{https://proceedings.neurips.cc/paper_files/paper/2022/file/8cc7e1509fbfee9cabaacd3ab0bfe2b1-Paper-Conference.pdf}{FNeVR: Neural Volume Rendering for Face Animation}. \textcolor{muted}{\textbf{NeurIPS} 2022}. \href{https://github.com/zengbohan0217/FNeVR}{Code}}
-\end{itemize}
-\vspace{2pt}
-\textbf{Journal}\par
-\vspace{2pt}
-\begin{itemize}[leftmargin=0.9em, topsep=1pt, itemsep=1pt, parsep=0pt]
-  \item {\small Houyuan Chen, \textbf{Hong Li}, Xianghao Kong, Tianrui Zhu, Yuwei Guo, Shaocong Xu, Chongjie Ye, Lvmin Zhang, Hao Zhao, Anyi Rao, \PaperTitle{https://houyuanchen111.github.io/UniVidX.github.io/}{UniVidX: A Unified Multimodal Framework for Versatile Video Generation via Diffusion Priors}. \textcolor{muted}{\textbf{TOG} 2026}. \href{https://github.com/houyuanchen111/UniVidX}{Code} \,|\, \href{https://houyuanchen111.github.io/UniVidX.github.io/}{Project}}
+\item \href{https://houyuanchen111.github.io/lino.github.io/}{\textbf{Light of Normals: Unified Feature Representation for Universal Photometric Stereo}}. \textbf{Hong Li}\EqContrib, Houyuan Chen\EqContrib, Chongjie Ye, Zhaoxi Chen, Bohan Li, Shaocong Xu, Xianda Guo, Xuhui Liu, Yikai Wang, Baochang Zhang, Satoshi Ikehata, Boxin Shi, Anyi Rao, Hao Zhao. \textcolor{accent}{\textbf{ICLR 2026}}\enspace \reslink{https://houyuanchen111.github.io/lino.github.io/}{Project}
 
-  \item {\small Xuhui Liu, \textbf{Hong Li}, Zhi Qiao, Yawen Huang, Xi Liu, Juan Zhang, Zhen Qian, Xiantong Zhen, Baochang Zhang, \PaperTitle{https://link.springer.com/article/10.1007/s11263-025-02426-2}{D3T: Dual-Domain Diffusion Transformer in Triplanar Latent Space for 3D Incomplete-View CT Reconstruction}. \textcolor{muted}{\textbf{IJCV} 2025}.}
+\item \href{https://daniellli.github.io/projects/DKT/}{\textbf{Diffusion Knows Transparency: Repurposing Video Diffusion for Transparent Object Depth and Normal Estimation}}. Shaocong Xu, Songlin Wei, Qizhe Wei, Zheng Geng, \textbf{Hong Li}, Licheng Shen, Qianpu Sun, Shu Han, Bin Ma, Bohan Li, Chongjie Ye, Yuhang Zheng, Nan Wang, Saining Zhang, Hao Zhao. \textcolor{accent}{\textbf{ICRA 2026}}\enspace \reslink{https://daniellli.github.io/projects/DKT/}{Project}
 
-  \item {\small Xiaoyue Duan\EqContrib, \textbf{Hong Li}\EqContrib, Panpan Wang, Tiancheng Wang, Boyu Liu, Baochang Zhang, \PaperTitle{https://www.sciencedirect.com/science/article/pii/S0925231223003739}{Bandit Interpretability of Deep Models via Confidence Selection}. \textcolor{muted}{\textbf{Neurocomputing} 2023}.}
-\end{itemize}
-\vspace{2pt}
-\textbf{Preprints}\par
-\vspace{2pt}
-\begin{itemize}[leftmargin=0.9em, topsep=1pt, itemsep=1pt, parsep=0pt]
-  \item {\small \textbf{Hong Li}, Boyu Liu, Xuhui Liu, Baochang Zhang, \PaperTitle{https://arxiv.org/abs/2603.04302}{Motion Manipulation via Unsupervised Keypoint Positioning in Face Animation}. \textcolor{muted}{\textbf{arXiv} 2026}.}
+\item \href{https://arxiv.org/abs/2603.04302}{\textbf{Motion Manipulation via Unsupervised Keypoint Positioning in Face Animation}}. \textbf{Hong Li}, Boyu Liu, Xuhui Liu, Baochang Zhang. \textcolor{accent}{\textbf{arXiv preprint, 2026}}.
 
-  \item {\small \textbf{Hong Li}, Yutang Feng, Minqi Meng, Yichen Yang, Xuhui Liu, Baochang Zhang, \PaperTitle{https://arxiv.org/abs/2603.04307}{Dual Diffusion Models for Multi-modal Guided 3D Avatar Generation}. \textcolor{muted}{\textbf{arXiv} 2026}.}
-\end{itemize}
-}
+\item \href{https://arxiv.org/abs/2603.04307}{\textbf{Dual Diffusion Models for Multi-modal Guided 3D Avatar Generation}}. \textbf{Hong Li}, Yutang Feng, Minqi Meng, Yichen Yang, Xuhui Liu, Baochang Zhang. \textcolor{accent}{\textbf{arXiv preprint, 2026}}.
 
-\Section{Academic Service}{
-\begin{itemize}
-  \item Reviewer: CVPR, NeurIPS, ICLR, ECCV, ACM MM, WACV, ICME.
-\end{itemize}
-}
+\item \href{https://yu-shaonian.github.io/UniTransfer-Web/}{\textbf{UniTransfer: Video Concept Transfer via Progressive Spatial and Timestep Decomposition}}. Guojun Lei, Rong Zhang, Chi Wang, Tianhang Liu, \textbf{Hong Li}, Zhiyuan Ma, Weiwei Xu. \textcolor{accent}{\textbf{NeurIPS 2025}}\enspace \reslink{https://yu-shaonian.github.io/UniTransfer-Web/}{Project}
 
+\item \href{https://link.springer.com/article/10.1007/s11263-025-02426-2}{\textbf{D3T: Dual-Domain Diffusion Transformer in Triplanar Latent Space for 3D Incomplete-View CT Reconstruction}}. Xuhui Liu, \textbf{Hong Li}, Zhi Qiao, Yawen Huang, Xi Liu, Juan Zhang, Zhen Qian, Xiantong Zhen, Baochang Zhang. \textcolor{accent}{\textbf{IJCV 2025}}.
+
+\item \href{https://yu-shaonian.github.io/Animate_Anything/}{\textbf{AnimateAnything: Consistent and Controllable Animation for Video Generation}}. Guojun Lei\EqContrib, Chi Wang\EqContrib, \textbf{Hong Li}\EqContrib, Yikai Wang, Rong Zhang, Weiwei Xu. \textcolor{accent}{\textbf{CVPR 2025}}\enspace \reslink{https://yu-shaonian.github.io/Animate_Anything/}{Project}
+
+\item \href{https://openaccess.thecvf.com/content/CVPR2024/papers/Li_UV-IDM_Identity-Conditioned_Latent_Diffusion_Model_for_Face_UV-Texture_Generation_CVPR_2024_paper.pdf}{\textbf{UV-IDM: Identity-Conditioned Latent Diffusion Model for Face UV-Texture Generation}}. \textbf{Hong Li}\EqContrib, Yutang Feng\EqContrib, Song Xue, Xuhui Liu, Bohan Zeng, Shanglin Li, Boyu Liu, Jianzhuang Liu, Shumin Han, Baochang Zhang. \textcolor{accent}{\textbf{CVPR 2024}}\enspace \reslink{https://github.com/Luh1124/UV-IDM}{Code}
+
+\item \href{https://www.sciencedirect.com/science/article/pii/S0925231223003739}{\textbf{Bandit Interpretability of Deep Models via Confidence Selection}}. Xiaoyue Duan\EqContrib, \textbf{Hong Li}\EqContrib, Panpan Wang, Tiancheng Wang, Boyu Liu, Baochang Zhang. \textcolor{accent}{\textbf{Neurocomputing 2023}}.
+
+\item \href{https://proceedings.neurips.cc/paper_files/paper/2022/file/8cc7e1509fbfee9cabaacd3ab0bfe2b1-Paper-Conference.pdf}{\textbf{FNeVR: Neural Volume Rendering for Face Animation}}. Bohan Zeng, Boyu Liu, \textbf{Hong Li}, Xuhui Liu, Jianzhuang Liu, Dapeng Chen, Wei Peng, Baochang Zhang. \textcolor{accent}{\textbf{NeurIPS 2022}}\enspace \reslink{https://github.com/zengbohan0217/FNeVR}{Code}
+\end{enumerate}
+\vspace{3pt}
+{\small\href{https://scholar.google.com/citations?user=5FBYzP8AAAAJ}{Full publication record on Google Scholar}}
 \end{document}
